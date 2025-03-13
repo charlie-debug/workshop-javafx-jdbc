@@ -3,7 +3,9 @@ package gui;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import db.DbException;
 import gui.listeners.DataChangeListener;
@@ -18,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.entities.Department;
+import model.exception.ValidationException;
 import model.services.DepartmentService;
 
 public class DepartmentFormController implements Initializable {
@@ -41,32 +44,43 @@ public class DepartmentFormController implements Initializable {
 
 	@FXML
 	public void onbtnSaveAction(ActionEvent event) {
-		if(entity == null) {
+		if (entity == null) {
 			throw new IllegalStateException("entity was null :/");
 		}
-		if(service == null) {
+		if (service == null) {
 			throw new IllegalStateException("service was null :/");
 		}
 		try {
-		entity = getFormData();
-		service.saveOrUpdate(entity);
-		notifySubcribeDataChangeListener();
-		Utils.currentStage(event).close();
-		}catch(DbException e) {
+			entity = getFormData();
+			service.saveOrUpdate(entity);
+			notifySubcribeDataChangeListener();
+			Utils.currentStage(event).close();
+		}catch(ValidationException e) {
+			setMessageError(e.getError());
+		}
+		catch (DbException e) {
 			Alerts.showAlerts("error saving department", null, e.getMessage(), AlertType.ERROR);
 		}
 	}
 
 	private void notifySubcribeDataChangeListener() {
-		for(DataChangeListener listener : dataChangeListeners) {
+		for (DataChangeListener listener : dataChangeListeners) {
 			listener.onDataChanged();
 		}
-		
+
 	}
 
 	private Department getFormData() {
 		Department obj = new Department();
+		ValidationException exception = new ValidationException("Validation error");
+
 		obj.setId(Utils.tryParseToInt(txtId.getText()));
+		if (txtName.getText() == null || txtName.getText().trim().equals("")) {
+			exception.addError("name", "campo obrigatório!");
+		}
+		if (exception.getError().size() > 0) {
+         throw exception;
+		}
 		obj.setName(txtName.getText());
 		return obj;
 	}
@@ -83,6 +97,7 @@ public class DepartmentFormController implements Initializable {
 	public void SetDepartmentService(DepartmentService service) {
 		this.service = service;
 	}
+
 	public void subcribeDataChangeListener(DataChangeListener listener) {
 		dataChangeListeners.add(listener);
 	}
@@ -105,6 +120,13 @@ public class DepartmentFormController implements Initializable {
 		}
 		txtId.setText(String.valueOf(entity.getId()));
 		txtName.setText(entity.getName());
+	}
+	
+	public void setMessageError(Map<String, String> errors) {
+		Set<String> filds = errors.keySet();
+		if(filds.contains("name")) {
+			lblErrorName.setText(errors.get("name"));
+		}
 	}
 
 }
