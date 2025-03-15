@@ -31,4 +31,5 @@ private/
  build/
  nbbuild/
  dist/
-
+# Eclipse
+.settings/
