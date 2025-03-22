@@ -26,6 +26,8 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -72,6 +74,14 @@ public class DepartmentListController implements Initializable, DataChangeListen
 		
 		Stage stage  = (Stage) Main.getScene().getWindow();
 		tableViewDepartmentList.prefHeightProperty().bind(stage.heightProperty());
+		
+			
+		ImageView imageView = new ImageView("/img/new.png");
+		btNew.setGraphic(imageView);
+		imageView.setFitHeight(30);
+		imageView.setFitWidth(30);
+	
+		
 		
 	}
 	

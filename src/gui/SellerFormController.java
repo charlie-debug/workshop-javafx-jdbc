@@ -30,6 +30,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 import model.entities.Department;
 import model.entities.Seller;
@@ -156,8 +157,9 @@ public class SellerFormController implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		initializeNodes();
+	public void initialize(URL url, ResourceBundle rb) {
+		initializeNodes();	
+		saveAndCancelImds();
 
 	}
 
@@ -219,5 +221,16 @@ public class SellerFormController implements Initializable {
 		 comboBoxDepartment.setCellFactory(factory); 
 		 comboBoxDepartment.setButtonCell(factory.call(null));   
 		}
+	
+	public void saveAndCancelImds() {
+		ImageView imageSave = new ImageView("/img/save.png");
+		ImageView imageCancel = new ImageView("/img/cancel.png");
+		btnSave.setGraphic(imageSave);
+	    btnCancel.setGraphic(imageCancel);
+	    imageSave.setFitHeight(30);
+	    imageSave.setFitWidth(30);
+	    imageCancel.setFitHeight(30);
+	    imageCancel.setFitWidth(30);
+	}
 
 }

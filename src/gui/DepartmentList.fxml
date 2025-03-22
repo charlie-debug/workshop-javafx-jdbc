@@ -6,22 +6,31 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DepartmentListController">
    <children>
-      <Label prefHeight="17.0" prefWidth="201.0" text="Registro de departamentos">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-         <padding>
-            <Insets left="5.0" top="5.0" />
-         </padding>
-      </Label>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button fx:id="btNew" mnemonicParsing="false" onAction="#onBtNewAction" text="NOVO" />
+          <Button fx:id="btNew" mnemonicParsing="false" onAction="#onBtNewAction" text="NOVO">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/new.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Label prefHeight="17.0" prefWidth="201.0" text="Registro de departamentos">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" top="5.0" />
+               </padding>
+            </Label>
         </items>
       </ToolBar>
       <TableView fx:id="tableViewDepartmentList" prefHeight="200.0" prefWidth="200.0">

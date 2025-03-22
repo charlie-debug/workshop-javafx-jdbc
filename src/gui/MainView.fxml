@@ -8,17 +8,17 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainViewController">
    <content>
-      <VBox prefHeight="316.0" prefWidth="385.0">
+      <VBox prefHeight="316.0" prefWidth="385.0" styleClass="vbox" stylesheets="@../application/application.css">
          <children>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="Registros">
+                <Menu fx:id="menuRegister" mnemonicParsing="false" text="Registros">
                   <items>
                     <MenuItem fx:id="menuItemDepartment" mnemonicParsing="false" onAction="#onMenuItemDepartmentAction" text="departamento" />
                         <MenuItem fx:id="menuItemSeller" mnemonicParsing="false" onAction="#onMenuItemSellerAction" text="vendedor" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Sobre">
+                <Menu fx:id="menuAbout" mnemonicParsing="false" text="Sobre">
                   <items>
                     <MenuItem fx:id="menuItemAbout" mnemonicParsing="false" onAction="#onMenuItemAboutAction" text="Sobre" />
                   </items>

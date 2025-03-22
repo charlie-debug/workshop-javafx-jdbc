@@ -27,6 +27,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -69,6 +70,10 @@ public class SellerListController implements Initializable, DataChangeListener {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		initializeNodes();
+		ImageView imageView = new ImageView("/img/new.png");
+		btNew.setGraphic(imageView);
+		imageView.setFitHeight(30);
+		imageView.setFitWidth(30);
 		
 	}
 
@@ -85,6 +90,8 @@ public class SellerListController implements Initializable, DataChangeListener {
 		Utils.formatTableColumnDouble(tableColumnBaseSalary, 2);
 		Stage stage  = (Stage) Main.getScene().getWindow();
 		tableViewSellerList.prefHeightProperty().bind(stage.heightProperty());
+		
+	
 		
 	}
 	
@@ -152,7 +159,7 @@ public class SellerListController implements Initializable, DataChangeListener {
 		 tableColumnREMOVE.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue())); 
 		 tableColumnREMOVE.setCellFactory(param -> new TableCell<Seller, Seller>() { 
 		        private final Button button = new Button("remover"); 
-		 
+		         
 		        @Override 
 		        protected void updateItem(Seller obj, boolean empty) { 
 		            super.updateItem(obj, empty); 

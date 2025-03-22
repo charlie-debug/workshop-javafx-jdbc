@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Menu;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
@@ -27,6 +29,11 @@ public class MainViewController implements Initializable {
 	@FXML
 	private MenuItem menuItemAbout;
 	
+	@FXML
+	private Menu menuRegister;
+	@FXML
+	private Menu menuAbout;
+		
 	@FXML
 	public void onMenuItemDepartmentAction() {
 		loadView("/gui/DepartmentList.fxml",(DepartmentListController controller)->{
@@ -48,7 +55,7 @@ public class MainViewController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		// TODO Auto-generated method stub
+		menuImgs();
 		
 	}
 
@@ -66,9 +73,34 @@ public class MainViewController implements Initializable {
 			initializeAction.accept(controller);
 			
 		} catch (IOException e) {
+			e.printStackTrace();
 			Alerts.showAlerts("IO exception", "Erro ao carregar a tela", e.getMessage(), AlertType.ERROR);
 			
 		}
+	}
+	
+	public void menuImgs() {
+		ImageView imageRegister = new ImageView("/img/register.png");
+		ImageView imageAbout = new ImageView("/img/about.png");
+		ImageView imageDepartment = new ImageView("/img/department.png");
+		ImageView imageSeller = new ImageView("/img/seller.png");
+		ImageView imageInfo = new ImageView("/img/info.png");
+		menuRegister.setGraphic(imageRegister);
+	    menuAbout.setGraphic(imageAbout);
+	    menuItemDepartment.setGraphic(imageDepartment);
+	    menuItemSeller.setGraphic(imageSeller);
+	    menuItemAbout.setGraphic(imageInfo);
+	    imageRegister.setFitHeight(30);
+	    imageRegister.setFitWidth(30);
+	    imageAbout.setFitHeight(30);
+	    imageAbout.setFitWidth(30);
+	    imageDepartment.setFitHeight(30);
+	    imageDepartment.setFitWidth(30);
+	    imageSeller.setFitHeight(30);
+	    imageSeller.setFitWidth(30);
+	    imageInfo.setFitHeight(30);
+	    imageInfo.setFitWidth(30);
+		
 	}
 	
 }

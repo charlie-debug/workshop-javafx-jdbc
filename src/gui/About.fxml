@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label text="Sobre">
+      <Label text="Sobre" textFill="WHITE">
          <VBox.margin>
             <Insets />
          </VBox.margin>
@@ -18,7 +18,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label prefHeight="17.0" prefWidth="281.0" text="Aplicação JavaFX">
+      <Label prefHeight="17.0" prefWidth="281.0" text="Aplicação JavaFX" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
